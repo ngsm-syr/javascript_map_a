@@ -1,12 +1,13 @@
 // JavaScript
-
-const map = L.map('map').setView([33.67345752177457, 130.44140661378802], 15);
+import {LeafletMap, TileLayer, Marker} from 'leaflet';
+const map = new LeafletMap('map').setView([33.67345752177457, 130.44140661378802], 15);
 
 // タイルレイヤーを作成し、地図にセットする
 // Open Street Map
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+new TileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+	maxZoom: 19,
+	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
-L.marker([33.67345752177457, 130.44140661378802]).addTo(map)
-  .bindPopup('A pretty CSS popup.<br> Easily customizable.');
+const marker = new Marker([[33.67345752177457, 130.44140661378802]).addTo(map);
+marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
